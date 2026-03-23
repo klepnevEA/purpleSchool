@@ -1,1 +1,34 @@
+:root {
+  --bg-color: #F0F4F8;
+  --button-bg-color: #008BFE;
+  --primary-color: #FFFFFF;
+  --font: "Roboto", sans-serif;
+}
+
+* {box-sizing: border-box;}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html, body, #app {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  font-family:var(--font);
+  font-optical-sizing: auto;
+  font-synthesis: none;
+  text-rendering: optimizeSpeed;
+}
+
 
