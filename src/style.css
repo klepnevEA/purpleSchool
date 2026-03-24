@@ -1,17 +1,19 @@
 :root {
   --bg-color: #F0F4F8;
   --button-bg-color: #008BFE;
+  --count-bg-color: #CCE8FF;
+  --text-color: #000000;
+  --border-color: #CCE8FF;
+  --card-bg-color: #FFFFFF;
   --primary-color: #FFFFFF;
-  --font: "Roboto", sans-serif;
+  --secondary-color: #222222;
+  --count-color: #008BFE;
+  --shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  --shadow-card: 0px 0px 16px rgba(0, 0, 0, 0.1);
+  --font: "Roboto", sans-serif
 }
 
 * {box-sizing: border-box;}
-
-#app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 html, body, #app {
   height: 100%;
@@ -20,8 +22,6 @@ html, body, #app {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   font-size: 16px;
   background-color: var(--bg-color);
   color: var(--primary-color);
