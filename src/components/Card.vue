@@ -1,27 +1,13 @@
 <script setup>
     import { ref,  inject } from "vue";
-    
     import CloseIcon from "./ui/icons/CloseIcon.vue";
     import CheckIcon from "./ui/icons/CheckIcon.vue";
     const props = defineProps(["cardInfo", "id"]);
-    const cardEvent = inject('cardEvent')
-    // const isTurnOf = ref(false);
-    // const trayGuess = ref(false);
-    // const isGuess = ref(false);
+    const cardEvent = inject('cardEvent');
 
     const eventClick = (id, action) => {
         cardEvent(props.id, action )
     }
-
-    // const noGuess = () => {
-    //     trayGuess.value = true;
-    //     isGuess.value = false;
-    // }
-
-    //     const guess = () => {
-    //     trayGuess.value = true;
-    //     isGuess.value = true;
-    // }
 </script>
 
 <template>
