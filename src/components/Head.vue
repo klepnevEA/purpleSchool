@@ -1,7 +1,7 @@
 <script setup>
-  import {ref} from "vue";
+    import { inject } from "vue";
     import Count from "./ui/Count.vue";
-    const countStore = ref(100);
+    const countStore = inject("count");
 </script>
 
 <template>

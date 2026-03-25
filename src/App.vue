@@ -2,12 +2,43 @@
   import Button from "./components/ui/Button.vue";
   import Main from "./components/Main.vue";
   import Head from "./components/Head.vue";
-  import {ref} from "vue";
+  import {ref, provide} from "vue";
 
   const isGameStart = ref(false);
   const statrGame = () => {
     isGameStart.value = !isGameStart.value
   }
+
+  const count = ref(10);
+  const cardsList = ref([
+    {
+      word: "man",
+      translation: "мужик",
+      state: "closed",
+      status: "pending"
+    },
+    {
+      word: "woman",
+      translation: "женщина",
+      state: "closed",
+      status: "pending"
+    }
+  ])
+
+const handleCardEvent = (cardIndex, cardAction) => {
+  if (cardIndex < 0 || cardIndex >= cardsList.value.length) return;
+
+  const card = cardsList.value[cardIndex];
+  if (cardAction === 'turnOf') card.state = 'opened';
+  else if (cardAction === 'noGuess' && card.status === 'pending') card.status = 'fail';
+  else if (cardAction === 'guess' && card.status === 'pending') card.status = 'success';
+};
+
+  provide("count", count);
+  provide('cardsList', cardsList);
+  provide('cardEvent', handleCardEvent)
+
+
 </script>
 
 <template>
