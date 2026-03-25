@@ -1,41 +1,44 @@
 <script setup>
-    import { ref } from "vue";
+    import { ref,  inject } from "vue";
+    
     import CloseIcon from "./ui/icons/CloseIcon.vue";
     import CheckIcon from "./ui/icons/CheckIcon.vue";
-    const isTurnOf = ref(false);
-    const trayGuess = ref(false);
-    const isGuess = ref(false);
+    const props = defineProps(["cardInfo", "id"]);
+    const cardEvent = inject('cardEvent')
+    // const isTurnOf = ref(false);
+    // const trayGuess = ref(false);
+    // const isGuess = ref(false);
 
-    const tuonOfCard = () => {
-        isTurnOf.value = !isTurnOf.value;
+    const eventClick = (id, action) => {
+        cardEvent(props.id, action )
     }
 
-    const noGuess = () => {
-        trayGuess.value = true;
-        isGuess.value = false;
-    }
+    // const noGuess = () => {
+    //     trayGuess.value = true;
+    //     isGuess.value = false;
+    // }
 
-        const guess = () => {
-        trayGuess.value = true;
-        isGuess.value = true;
-    }
+    //     const guess = () => {
+    //     trayGuess.value = true;
+    //     isGuess.value = true;
+    // }
 </script>
 
 <template>
  <div class="card">
         <div class="card__wrapper">
-            <div class="card__number">1</div>
-            <div class="card__check" v-if="trayGuess">
-                <CloseIcon :size=36 v-if="!isGuess"/>
+            <div class="card__number">{{props.id + 1}}</div>
+            <div class="card__check" v-if="props.cardInfo.status != 'pending'">
+                <CloseIcon :size=36 v-if="props.cardInfo.status == 'fail'"/>
                 <CheckIcon :size=36 v-else/>
             </div>
-            <div class="card__word" v-if="!isTurnOf">unadmitted</div>
-            <div class="card__word" v-else>караван верблюдов</div>
+            <div class="card__word" v-if="props.cardInfo.state == 'closed'">{{props.cardInfo.word}}</div>
+            <div class="card__word" v-else>{{props.cardInfo.translation}}</div>
             <div class="card__buttons">
-                <div class="card__button" v-if="!isTurnOf" @click="tuonOfCard()">Перевернуть</div>
+                <div class="card__button" v-if="props.cardInfo.state == 'closed'" @click="eventClick(props.id, 'turnOf')">Перевернуть</div>
                 <div class="card__buttons-check" v-else>
-                        <CloseIcon  @click="noGuess()"/>
-                        <CheckIcon  @click="guess()"/>
+                        <CloseIcon @click="eventClick(props.id, 'noGuess')"/>
+                        <CheckIcon @click="eventClick(props.id, 'guess')"/>
                 </div>
             </div>
         </div>
