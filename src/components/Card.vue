@@ -54,6 +54,8 @@
     justify-content: center;
 }
 
+.card__word {text-align: center;}
+
 .card__number {
     position: absolute;
     top: 0;
