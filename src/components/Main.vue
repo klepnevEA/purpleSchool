@@ -2,7 +2,6 @@
     import { inject } from "vue";
     import Card from "./Card.vue";
     const cardsList = inject("cardsList");
-    console.log(cardsList);
 </script>
 
 <template>
